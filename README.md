@@ -37,6 +37,8 @@ iOS、Android に GSE IPTV というアプリをインストールして、EPG �
 * Android 版
  * https://play.google.com/store/apps/details?id=com.gsetech.smartiptv
 
+<img src="https://raw.githubusercontent.com/nm7/Chinachu-IPTV-API-addon/images/IMG_01.PNG" width="320px">
+<img src="https://raw.githubusercontent.com/nm7/Chinachu-IPTV-API-addon/images/IMG_02.PNG" width="640px">
 
 # License
 upstream と同じ、GPL v2 です。
