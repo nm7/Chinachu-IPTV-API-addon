@@ -1,5 +1,43 @@
 (function() {
 	
+	switch (request.query.quality) {
+		case 'ultrahigh':
+			vcodec = 'libx264';
+			acodec = 'aac';
+			vsize  = '&s='     + '1920x1080';
+			vrate  = '&b%3Av=' + '3M';
+			arate  = '&b%3Aa=' + '192k';
+			break;
+		case 'high':
+			vcodec = 'libx264';
+			acodec = 'aac';
+			vsize  = '&s='     + '1280x720';
+			vrate  = '&b%3Av=' + '1.5M';
+			arate  = '&b%3Aa=' + '128k';
+			break;
+		case 'middle':
+			vcodec = 'libx264';
+			acodec = 'aac';
+			vsize  = '&s='     + '640x360';
+			vrate  = '&b%3Av=' + '400k';
+			arate  = '&b%3Aa=' + '64k';
+			break;
+		case 'low':
+			vcodec = 'libx264';
+			acodec = 'aac';
+			vsize  = '&s='     + '426x240';
+			vrate  = '&b%3Av=' + '300k';
+			arate  = '&b%3Aa=' + '32k';
+			break;
+		default:
+			vcodec = 'copy';
+			acodec = 'copy';
+			vsize  = '';
+			vrate  = '';
+			arate  = '';
+			break;
+	}
+
 	switch (request.type) {
 		/*- channnel.m3u8 -*/
 		case 'm3u8': // channel playlist 
@@ -14,7 +52,7 @@
                                 if (!!config.wuiUsers && config.wuiUsers.length > 0) {
                                         response.write(protocol + '://' + config.wuiUsers[0] + '@' + request.headers.host + '/api/channel/' + ch.id + '/watch.m2ts?ext=m2ts&c%3Av=copy&c%3Aa=copy\n');
                                 } else {
-                                        response.write(protocol + '://' + request.headers.host + '/api/channel/' + ch.id + '/watch.m2ts?ext=m2ts&c%3Av=copy&c%3Aa=copy\n');
+                                        response.write(protocol + '://' + request.headers.host + '/api/channel/' + ch.id + '/watch.m2ts?ext=m2ts&c%3Av=' + vcodec + vrate + '&c%3Aa=' + acodec + arate + vsize + '\n');
                                 }
 			});
 			
