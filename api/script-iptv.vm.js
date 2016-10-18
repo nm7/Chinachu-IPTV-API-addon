@@ -47,7 +47,7 @@
 			response.head(200);
 			response.write('#EXTM3U\n');
 			data.schedule.forEach(function(ch) {
-				response.write('#EXTINF:-1 tvg-id="' + ch.id + '",' + ch.name + '\n');
+				response.write('#EXTINF:-1 tvg-id="' + ch.id + '" tvg-name="' + ch.name + '" group-title="' + ch.type + '",' + ch.name + '\n');
                                 // Pass BASIC authentication
                                 if (!!config.wuiUsers && config.wuiUsers.length > 0) {
                                         response.write(protocol + '://' + config.wuiUsers[0] + '@' + request.headers.host + '/api/channel/' + ch.id + '/watch.m2ts?ext=m2ts&c%3Av=copy&c%3Aa=copy\n');
